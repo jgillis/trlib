@@ -44,9 +44,15 @@ install(TARGETS trlib
   EXPORT trlib-config
   DESTINATION lib)
 
+if(WIN32)
+    set(CMAKE_INSTALL_CONFIG "${CMAKE_INSTALL_PREFIX}/cmake")
+else()
+    set(CMAKE_INSTALL_CONFIG "${CMAKE_INSTALL_LIBDIR}/cmake/trlib")
+endif()
+
 install(EXPORT trlib-config
   NAMESPACE "trlib::"
-  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/trlib")
+  DESTINATION "${CMAKE_INSTALL_CONFIG}")
 
 install(FILES "${PROJECT_BINARY_DIR}/trlib.pc"
   DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig")
@@ -71,7 +77,7 @@ write_basic_package_version_file(
 
 install(
   FILES "${PROJECT_BINARY_DIR}/trlib-config-version.cmake"
-  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/trlib"
+  DESTINATION "${CMAKE_INSTALL_CONFIG}
 )
 
 #find_package(HDF5)
