@@ -77,7 +77,7 @@ write_basic_package_version_file(
 
 install(
   FILES "${PROJECT_BINARY_DIR}/trlib-config-version.cmake"
-  DESTINATION "${CMAKE_INSTALL_CONFIG}
+  DESTINATION "${CMAKE_INSTALL_CONFIG}"
 )
 
 #find_package(HDF5)
